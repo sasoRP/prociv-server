@@ -1,6 +1,8 @@
 package com.prosas.prociv.server.services;
 
 import com.prosas.prociv.server.api.viewModels.Occurrence;
+import com.prosas.prociv.server.api.viewModels.OccurrenceLocation;
+import com.prosas.prociv.server.api.viewModels.OccurrenceResources;
 import com.prosas.prociv.server.integration.client.ProCivClient;
 import com.prosas.prociv.server.integration.client.ProCivClientImpl;
 import com.prosas.prociv.server.integration.client.ProCivHttpClientException;
@@ -67,14 +69,42 @@ public class OccurrencesServiceImpl implements OccurrencesService {
         List<Datum> datumList = root.getHistoryOccurrencesByLocationResult.ArrayInfo.get(0).Data;
 
         for (Datum datum: datumList) {
-            Occurrence occurrence = new Occurrence();
-            occurrence.setDescription(datum.Natureza.Nome);
-            occurrence.setCouncilId(datum.Concelho.Id);
-            occurrence.setExternalId(datum.Id);
+            Occurrence occurrence = new Occurrence.Builder(datum.Id)
+                    .withDescription(datum.Natureza.Nome)
+                    .withStatus(datum.EstadoOcorrencia.Name)
+                    .withLocation(buildLocation(datum))
+                    .withResources(buildResources(datum))
+                    .build();
 
             occurrences.add(occurrence);
         }
 
         return occurrences;
+    }
+
+    private OccurrenceLocation buildLocation(Datum datum) {
+        OccurrenceLocation location = new OccurrenceLocation();
+
+        location.setDistrictId(datum.Distrito.Id);
+        location.setDistrictName(datum.Distrito.Name);
+        location.setCouncilId(datum.Concelho.Id);
+        location.setCouncilName(datum.Concelho.Name);
+        location.setParishId(datum.Freguesia.Id);
+        location.setParishName(datum.Freguesia.Name);
+        location.setLatitude(datum.Latitude);
+        location.setLongitude(datum.Longitude);
+
+        return location;
+    }
+
+    private OccurrenceResources buildResources(Datum datum) {
+        OccurrenceResources resources = new OccurrenceResources();
+
+        resources.setTotalAerialMeans(datum.NumeroMeiosAereosEnvolvidos);
+        resources.setTotalTerrestrialMeans(datum.NumeroMeiosTerrestresEnvolvidos);
+        resources.setTotalAerialHumans(datum.NumeroOperacionaisAereosEnvolvidos);
+        resources.setTotalTerrestrialHumans(datum.NumeroOperacionaisTerrestresEnvolvidos);
+
+        return resources;
     }
 }
