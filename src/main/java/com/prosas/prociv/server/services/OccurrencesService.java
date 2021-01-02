@@ -11,4 +11,10 @@ import javax.ejb.Local;
 @Local
 public interface OccurrencesService {
     List<Occurrence> getOccurrencesByCouncil(int councilId);
+
+    List<Occurrence> getOccurrencesByDistrict(int districtId);
+
+    List<Occurrence> getOccurrencesByParish(int parishId);
+
+    List<Occurrence> getOccurrences();
 }

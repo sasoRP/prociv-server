@@ -14,4 +14,10 @@ import javax.json.JsonObject;
 public interface ProCivClient {
 
     String getOccurrencesByCouncil(int councilId) throws ProCivHttpClientException;
+
+    String getOccurrencesByDistrict(int districtId) throws ProCivHttpClientException;
+
+    String getOccurrencesByParish(int parishId) throws ProCivHttpClientException;
+
+    String getOccurrences() throws ProCivHttpClientException;
 }
