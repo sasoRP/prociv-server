@@ -1,6 +1,8 @@
 package com.prosas.prociv.server.api;
 
 import com.prosas.prociv.server.api.viewModels.Occurrence;
+import com.prosas.prociv.server.api.viewModels.OccurrenceLocation;
+import com.prosas.prociv.server.api.viewModels.OccurrenceResources;
 import com.prosas.prociv.server.services.OccurrencesService;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,10 +70,44 @@ public class OccurrencesResourceTest {
 
     private List<Occurrence> getMockOccurrences() {
         List<Occurrence> occurrences = new ArrayList<>();
-        occurrences.add(new Occurrence("1", COUNCIL_ID, "desc1"));
-        occurrences.add(new Occurrence("2", COUNCIL_ID, "desc2"));
-        occurrences.add(new Occurrence("3", COUNCIL_ID, "desc3"));
+
+        Occurrence occurrence1 = new Occurrence.Builder("1")
+                .withLocation(getMockLocation())
+                .withStatus("status1")
+                .withDescription("desc1")
+                .withResources(getMockResources())
+                .build();
+
+        Occurrence occurrence2 = new Occurrence.Builder("2")
+                .withLocation(getMockLocation())
+                .withStatus("status2")
+                .withDescription("desc2")
+                .withResources(getMockResources())
+                .build();
+
+        Occurrence occurrence3 = new Occurrence.Builder("3")
+                .withLocation(getMockLocation())
+                .withStatus("status3")
+                .withDescription("desc3")
+                .withResources(getMockResources())
+                .build();
+
+        occurrences.add(occurrence1);
+        occurrences.add(occurrence2);
+        occurrences.add(occurrence3);
 
         return occurrences;
+    }
+
+    private OccurrenceResources getMockResources() {
+        OccurrenceResources resources = new OccurrenceResources();
+
+        return resources;
+    }
+
+    private OccurrenceLocation getMockLocation() {
+        OccurrenceLocation location = new OccurrenceLocation();
+
+        return location;
     }
 }
