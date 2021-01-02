@@ -1,5 +1,7 @@
 package com.prosas.prociv.server.api.viewModels;
 
+import java.util.Date;
+
 /**
  * @author prosas
  */
@@ -8,6 +10,7 @@ public class Occurrence {
     private String externalId;
     private String description;
     private String status;
+    private Date date;
     private OccurrenceLocation location;
     private OccurrenceResources resources;
 
@@ -18,6 +21,7 @@ public class Occurrence {
         private String status;
         private OccurrenceLocation location;
         private OccurrenceResources resources;
+        private Date date;
 
         public Builder(String externalId) {
             this.externalId = externalId;
@@ -31,6 +35,12 @@ public class Occurrence {
 
         public Builder withStatus(String status) {
             this.status = status;
+
+            return this;
+        }
+
+        public Builder withDate(Date date) {
+            this.date = date;
 
             return this;
         }
@@ -52,6 +62,7 @@ public class Occurrence {
             occurrence.externalId = this.externalId;
             occurrence.description = this.description;
             occurrence.status = this.status;
+            occurrence.date = this.date;
             occurrence.location = this.location;
             occurrence.resources = this.resources;
 
@@ -85,6 +96,14 @@ public class Occurrence {
         this.status = status;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     public OccurrenceLocation getLocation() {
         return location;
     }
@@ -102,17 +121,6 @@ public class Occurrence {
     }
 
     private Occurrence() {
-    }
-
-    @Override
-    public String toString() {
-        return "Occurrence{" +
-                "externalId='" + externalId + '\'' +
-                ", description='" + description + '\'' +
-                ", status='" + status + '\'' +
-                ", location=" + location +
-                ", resources=" + resources +
-                '}';
     }
 
     @Override
@@ -135,6 +143,9 @@ public class Occurrence {
         if (status != null ? !status.equals(that.status) : that.status != null) {
             return false;
         }
+        if (date != null ? !date.equals(that.date) : that.date != null) {
+            return false;
+        }
         if (location != null ? !location.equals(that.location) : that.location != null) {
             return false;
         }
@@ -146,8 +157,21 @@ public class Occurrence {
         int result = externalId != null ? externalId.hashCode() : 0;
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (status != null ? status.hashCode() : 0);
+        result = 31 * result + (date != null ? date.hashCode() : 0);
         result = 31 * result + (location != null ? location.hashCode() : 0);
         result = 31 * result + (resources != null ? resources.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Occurrence{" +
+                "externalId='" + externalId + '\'' +
+                ", description='" + description + '\'' +
+                ", status='" + status + '\'' +
+                ", date=" + date +
+                ", location=" + location +
+                ", resources=" + resources +
+                '}';
     }
 }

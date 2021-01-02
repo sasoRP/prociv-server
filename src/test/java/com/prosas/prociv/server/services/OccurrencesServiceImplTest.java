@@ -8,6 +8,7 @@ import com.prosas.prociv.server.integration.client.ProCivHttpClientException;
 import com.prosas.prociv.server.tests.Utilities;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +21,6 @@ import org.mockito.MockitoAnnotations;
 public class OccurrencesServiceImplTest {
 
     private static final int COUNCIL_ID = 1;
-    private static final String SAMPLE_OCCURRENCES_LIST = "";
 
     @InjectMocks
     private OccurrencesServiceImpl occurrencesService;
@@ -75,6 +75,7 @@ public class OccurrencesServiceImplTest {
         List<Occurrence> occurrences = new ArrayList<>();
 
         Occurrence occurrence1 = new Occurrence.Builder("38465368")
+                .withDate(new Date(1609035540000L))
                 .withResources(getExpectedResources1())
                 .withDescription("Riscos Tecnológicos / Incêndios em Equipamento e Produtos / Equipamentos")
                 .withStatus("Despacho de 1º Alerta")
@@ -82,6 +83,7 @@ public class OccurrencesServiceImplTest {
                 .build();
 
         Occurrence occurrence2 = new Occurrence.Builder("38465360")
+                .withDate(new Date(1608996060000L))
                 .withResources(getExpectedResources2())
                 .withDescription("Protecção e Assistência a Pessoas e Bens / Assistência em Saúde / Trauma")
                 .withStatus("Chegada ao TO")
@@ -89,6 +91,7 @@ public class OccurrencesServiceImplTest {
                 .build();
 
         Occurrence occurrence3 = new Occurrence.Builder("38465364")
+                .withDate(new Date(1608865800000L))
                 .withResources(getExpectedResources3())
                 .withDescription("Protecção e Assistência a Pessoas e Bens / Assistência em Saúde / Trauma")
                 .withStatus("Chegada ao TO")

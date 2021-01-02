@@ -10,6 +10,7 @@ import com.prosas.prociv.server.integration.client.entities.Datum;
 import com.prosas.prociv.server.integration.client.entities.Root;
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -47,6 +48,51 @@ public class OccurrencesServiceImpl implements OccurrencesService {
         return occurrences;
     }
 
+    @Override
+    public List<Occurrence> getOccurrencesByDistrict(int districtId) {
+        List<Occurrence> occurrences = new ArrayList<>();
+
+        try {
+            String jsonResponse = proCivClient.getOccurrencesByDistrict(districtId);
+            occurrences = parseResponse(jsonResponse);
+        }
+        catch (ProCivHttpClientException ex) {
+            LOGGER.error("Returning an empty list of occurrences as there was an error raised by the ProCivClient: {}", ex.getMessage());
+        }
+
+        return occurrences;
+    }
+
+    @Override
+    public List<Occurrence> getOccurrencesByParish(int parishId) {
+        List<Occurrence> occurrences = new ArrayList<>();
+
+        try {
+            String jsonResponse = proCivClient.getOccurrencesByParish(parishId);
+            occurrences = parseResponse(jsonResponse);
+        }
+        catch (ProCivHttpClientException ex) {
+            LOGGER.error("Returning an empty list of occurrences as there was an error raised by the ProCivClient: {}", ex.getMessage());
+        }
+
+        return occurrences;
+    }
+
+    @Override
+    public List<Occurrence> getOccurrences() {
+        List<Occurrence> occurrences = new ArrayList<>();
+
+        try {
+            String jsonResponse = proCivClient.getOccurrences();
+            occurrences = parseResponse(jsonResponse);
+        }
+        catch (ProCivHttpClientException ex) {
+            LOGGER.error("Returning an empty list of occurrences as there was an error raised by the ProCivClient: {}", ex.getMessage());
+        }
+
+        return occurrences;
+    }
+
     private List<Occurrence> parseResponse(String jsonResponse) {
         List<Occurrence> occurrences = new ArrayList<>();
 
@@ -70,6 +116,7 @@ public class OccurrencesServiceImpl implements OccurrencesService {
 
         for (Datum datum: datumList) {
             Occurrence occurrence = new Occurrence.Builder(datum.Id)
+                    .withDate(new Date(buildDate(datum.DataOcorrencia)))
                     .withDescription(datum.Natureza.Nome)
                     .withStatus(datum.EstadoOcorrencia.Name)
                     .withLocation(buildLocation(datum))
@@ -80,6 +127,15 @@ public class OccurrencesServiceImpl implements OccurrencesService {
         }
 
         return occurrences;
+    }
+
+    private long buildDate(String date) {
+        int start = date.indexOf('(') + 1;
+        int end = date.indexOf('+');
+
+        String millisecondsString = date.substring(start, end);
+
+        return Long.parseLong(millisecondsString);
     }
 
     private OccurrenceLocation buildLocation(Datum datum) {
