@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+    wildfly:
+        build:
+            context: wildfly
+        restart: always
+        ports:
+          - 8085:8080
+          - 9995:9990
+    database:
+        build:
+            context: postgres
+        environment:
+            POSTGRES_PASSWORD: prociv

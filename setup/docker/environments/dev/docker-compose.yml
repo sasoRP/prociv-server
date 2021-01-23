@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+    wildfly:
+        build:
+            context: wildfly
+        restart: always
+        ports:
+          - 8080:8080
+          - 9990:9990

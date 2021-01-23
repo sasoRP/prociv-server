@@ -11,7 +11,7 @@ import java.nio.file.Path;
 
 /**
  *     
- * @author prosas
+ * @author sasoRP
  */
 public class Utilities {
     public static String readMock(String fileName) throws IOException {

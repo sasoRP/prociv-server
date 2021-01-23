@@ -3,7 +3,7 @@ package com.prosas.prociv.server.integration.client;
 
 /**
  *     
- * @author prosas
+ * @author sasoRP
  */
 public class ProCivHttpClientException extends Exception {
 

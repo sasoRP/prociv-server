@@ -3,7 +3,7 @@ package com.prosas.prociv.server.api.viewModels;
 import java.util.Date;
 
 /**
- * @author prosas
+ * @author sasoRP
  */
 public class Occurrence {
 

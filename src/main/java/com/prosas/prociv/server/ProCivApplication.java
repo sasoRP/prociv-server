@@ -5,7 +5,7 @@ import javax.ws.rs.core.Application;
 
 /**
  *     
- * @author Smith Micro
+ * @author sasoRP
  */
 @ApplicationPath("/")
 public class ProCivApplication extends Application {
