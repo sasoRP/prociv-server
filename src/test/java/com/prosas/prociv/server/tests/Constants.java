@@ -2,7 +2,7 @@ package com.prosas.prociv.server.tests;
 
 /**
  *     
- * @author prosas
+ * @author sasoRP
  */
 public class Constants {
 

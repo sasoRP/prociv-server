@@ -8,7 +8,7 @@ import javax.json.JsonObject;
 
 /**
  *     
- * @author prosas
+ * @author sasoRP
  */
 @Local
 public interface ProCivClient {

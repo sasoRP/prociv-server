@@ -11,7 +11,7 @@ import javax.ejb.Stateless;
 
 /**
  *     
- * @author prosas
+ * @author sasoRP
  */
 @Stateless
 public class ProCivHttpClientImpl implements ProCivHttpClient {

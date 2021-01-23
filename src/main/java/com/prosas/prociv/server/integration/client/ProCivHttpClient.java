@@ -5,7 +5,7 @@ import javax.ejb.Local;
 
 /**
  *     
- * @author prosas
+ * @author sasoRP
  */
 @Local
 public interface ProCivHttpClient {
