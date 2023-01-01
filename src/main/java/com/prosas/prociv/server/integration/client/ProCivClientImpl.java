@@ -1,9 +1,9 @@
 package com.prosas.prociv.server.integration.client;
 
-import javax.ejb.Stateless;
+import jakarta.ejb.EJB;
+import jakarta.ejb.Stateless;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import javax.ejb.EJB;
 
 
 /**

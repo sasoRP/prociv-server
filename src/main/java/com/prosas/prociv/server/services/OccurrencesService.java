@@ -1,8 +1,8 @@
 package com.prosas.prociv.server.services;
 
 import com.prosas.prociv.server.api.viewModels.Occurrence;
+import jakarta.ejb.Local;
 import java.util.List;
-import javax.ejb.Local;
 
 /**
  *     

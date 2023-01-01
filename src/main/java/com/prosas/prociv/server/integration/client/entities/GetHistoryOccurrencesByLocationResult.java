@@ -1,9 +1,8 @@
 
 package com.prosas.prociv.server.integration.client.entities;
 
+import jakarta.json.bind.annotation.JsonbProperty;
 import java.util.List;
-import javax.json.bind.annotation.JsonbProperty;
-import javax.json.bind.annotation.JsonbTransient;
 
 /**
  *     

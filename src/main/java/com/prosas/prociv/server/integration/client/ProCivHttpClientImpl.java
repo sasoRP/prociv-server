@@ -1,13 +1,13 @@
 
 package com.prosas.prociv.server.integration.client;
 
+import jakarta.ejb.Stateless;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
-import javax.ejb.Stateless;
 
 /**
  *     

@@ -1,7 +1,7 @@
 package com.prosas.prociv.server.integration.client;
 
+import jakarta.ejb.Local;
 import java.io.IOException;
-import javax.ejb.Local;
 
 /**
  *     

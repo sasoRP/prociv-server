@@ -1,7 +1,6 @@
 package com.prosas.prociv.server.integration.client.entities;
 
-import java.util.Date;
-import javax.json.bind.annotation.JsonbProperty;
+import jakarta.json.bind.annotation.JsonbProperty;
 
 public class Concelho{
     @JsonbProperty("Active")
