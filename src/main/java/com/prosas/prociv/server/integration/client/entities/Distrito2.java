@@ -7,7 +7,7 @@ import javax.json.bind.annotation.JsonbTransient;
 
 /**
  *     
- * @author prosas
+ * @author sasoRP
  */
 public class Distrito2 {
     @JsonbProperty("Active")

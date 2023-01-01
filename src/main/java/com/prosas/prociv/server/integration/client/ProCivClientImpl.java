@@ -8,7 +8,7 @@ import javax.ejb.EJB;
 
 /**
  *     
- * @author prosas
+ * @author sasoRP
  */
 @Stateless
 public class ProCivClientImpl implements ProCivClient {

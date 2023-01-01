@@ -3,7 +3,7 @@ package com.prosas.prociv.server.api.viewModels;
 
 /**
  *     
- * @author Smith Micro
+ * @author sasoRP
  */
 public class OccurrenceResources {
 
