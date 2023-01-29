@@ -37,6 +37,11 @@ jobs:
           ${{ runner.os }}-maven-
     - name: Run Unit Tests
       run: mvn clean test
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        junit_files: "target/surefire-reports/*.xml"
     - name: Build with Maven
       run: mvn -B -Dmaven.test.skip package --file pom.xml
     - name: 'Upload Artifact'
