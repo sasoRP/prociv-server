@@ -46,10 +46,10 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: jacoco.xml
-        path: |
-        target/site/jacoco/jacoco.xml
-        target/site/jacoco/jacoco.html
-        target/site/jacoco/jacoco.csv
+        path:
+          - target/site/jacoco/jacoco.xml
+          - target/site/jacoco/jacoco.html
+          - target/site/jacoco/jacoco.csv
     - name: Code Coverage Report
       uses: irongut/CodeCoverageSummary@v1.3.0
       with:
