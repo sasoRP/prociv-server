@@ -47,7 +47,7 @@ jobs:
       with:
         name: jacoco.xml
         with:
-          name: my-artifact
+          name: coverage
           path: |
             target/site/jacoco/jacoco.xml
             target/site/jacoco/jacoco.html
