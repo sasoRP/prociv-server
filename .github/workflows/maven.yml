@@ -49,11 +49,23 @@ jobs:
         junit_files: "target/surefire-reports/*.xml"
     
     - name: Generate JaCoCo Badge
+      id: jacoco
       uses: cicirello/jacoco-badge-generator@v2
       with:
         generate-branches-badge: true
         colors: green yellow orange red
         intervals: 90 75 60
+    
+    - name: Log coverage percentage
+      run: |
+        echo "coverage = ${{ steps.jacoco.outputs.coverage }}"
+        echo "branch coverage = ${{ steps.jacoco.outputs.branches }}"
+        
+    - name: Upload JaCoCo coverage report
+      uses: actions/upload-artifact@v2
+      with:
+        name: jacoco-report
+        path: target/site/jacoco/
     
     - name: Build with Maven
       run: mvn -B -Dmaven.test.skip package --file pom.xml
