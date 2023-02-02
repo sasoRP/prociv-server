@@ -52,6 +52,8 @@ jobs:
       uses: cicirello/jacoco-badge-generator@v2
       with:
         generate-branches-badge: true
+        colors: green yellow orange red
+        intervals: 90 75 60
     
     - name: Build with Maven
       run: mvn -B -Dmaven.test.skip package --file pom.xml
