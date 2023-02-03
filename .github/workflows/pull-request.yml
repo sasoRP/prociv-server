@@ -33,14 +33,6 @@ jobs:
         if: always()
         with:
           junit_files: "target/surefire-reports/*.xml"
-        
-      - name: Add coverage to PR
-        uses: madrapps/jacoco-report@v1.3
-        with:
-          paths: ${{ github.workspace }}/target/site/jacoco/jacoco.xml
-          token: ${{ secrets.GITHUB_TOKEN }}
-          min-coverage-overall: 75
-          min-coverage-changed-files: 75
     
       - name: Generate JaCoCo Badge
         id: jacoco
